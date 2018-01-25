@@ -29,13 +29,21 @@
     "superkoa": "^1.0.3"
   },
   "dependencies": {
+    "awilix": "^3.0.4",
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "koa": "^2.4.1",
     "koa-router": "^7.3.0",
     "rimraf": "^2.6.2"
   },
   "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
     "verbose": true,
     "babel": "inherit",
     "require": [
@@ -52,6 +60,9 @@
           }
         }
       ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
     ]
   }
 }
