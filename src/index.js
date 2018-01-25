@@ -1,8 +1,16 @@
 import appFactory from './app'
+import * as loader from './album-loader'
+import SongLibrary from './song-library'
 
-// TODO: Import from other sources or leave this as a setting
-import songs from '../test/songs.fixture'
+function addAlbums(app) {
+  return (albums) => {
+    const library = SongLibrary.fromAlbums(albums)
+    app.configure({songLibrary: library})
+  }
+}
 
 const app = appFactory()
-app.configure({songs: songs})
-app.listen(3000)
+
+loader.readAllAlbums()
+  .then(addAlbums(app))
+  .then(() => app.listen(3000))

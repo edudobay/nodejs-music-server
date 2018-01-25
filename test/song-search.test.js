@@ -3,11 +3,12 @@ import appFactory from '../src/app'
 import superkoa from 'superkoa'
 import {inspect} from 'util'
 
+import SongLibrary from '../src/song-library'
 import songs from './songs.fixture'
 
 function app() {
   const app = appFactory()
-  app.configure({songs: songs})
+  app.configure({songLibrary: SongLibrary.fromTracks(songs)})
   return app
 }
 

@@ -10,7 +10,7 @@ test('should iterate tracks from all albums', async t => {
   const albums = await loader.readAllAlbums()
   const originalCount = sum(albums.map(a => count(a.tracks)))
 
-  const library = songLibrary.createFromAlbums(albums)
+  const library = songLibrary.fromAlbums(albums)
   let iteratedCount = 0
   for (let song of library.allSongs()) {
     iteratedCount++

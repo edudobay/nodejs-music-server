@@ -3,8 +3,9 @@ import Router from 'koa-router'
 import { createContainer, asClass, asFunction } from 'awilix'
 
 import * as songs from './songs'
+import * as songLibrary from './song-library'
 
-const modules = [songs]
+const modules = [songs, songLibrary]
 
 class Configuration {
   constructor () {
@@ -31,7 +32,7 @@ function appFactory() {
 
   const container = createContainer()
   container.register({
-    songs: asFunction(() => _.settings.songs).scoped()
+    songLibrary: asFunction(() => _.settings.songLibrary).scoped(),
   })
 
   modules.forEach(m => m.configure(router, container))
